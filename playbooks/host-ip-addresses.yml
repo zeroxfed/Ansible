@@ -1,0 +1,17 @@
+---
+- name: Display host IP addresses without remote Python modules
+  hosts: all
+  gather_facts: false
+  become: false
+  tasks:
+    - name: Read IPv4 and IPv6 interface addresses
+      ansible.builtin.raw: /usr/sbin/ip -brief address show
+      register: host_addresses
+      changed_when: false
+      check_mode: false
+
+    - name: Report host IP addresses by interface
+      ansible.builtin.debug:
+        msg:
+          host: "{{ inventory_hostname }}"
+          interface_addresses: "{{ host_addresses.stdout_lines }}"

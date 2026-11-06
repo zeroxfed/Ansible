@@ -1,0 +1,10 @@
+---
+- name: Retrieve local machine IP address
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: Display default IPv4 address
+      ansible.builtin.debug:
+        msg: "Local IP address: {{ ansible_default_ipv4.address }}"
