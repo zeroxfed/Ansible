@@ -1,0 +1,140 @@
+2026-11-07 23:41:11,169 p=2357896 u=mcachot n=ansible ERROR| [ERROR]: YAML parsing failed: Colons in unquoted values must be followed by a non-space character.
+Origin: /home/mcachot/ansible/playbooks/copy-file.yml:3:11
+
+1   - name: Copy default HTML file for site
+2     tags: apache, apache2, httpd
+3       copy:
+            ^ column 11
+
+
+For example:
+
+    raw: echo 'name: ansible'
+
+Should be:
+
+    raw: "echo 'name: ansible'"
+
+
+2026-11-07 23:42:35,109 p=2358134 u=mcachot n=ansible INFO| PLAY [all] ********************************************************************************************************************************************************************************************************
+2026-11-07 23:42:35,115 p=2358134 u=mcachot n=ansible INFO| TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
+2026-11-07 23:42:37,478 p=2358134 u=mcachot n=ansible WARNING| [WARNING]: Host '192.168.0.106' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.22/reference_appendices/interpreter_discovery.html for more information.
+
+2026-11-07 23:42:37,478 p=2358134 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-07 23:42:37,583 p=2358134 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-07 23:42:37,590 p=2358134 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-07 23:42:37,596 p=2358134 u=mcachot n=ansible INFO| TASK [Copy default HTML file for site] ****************************************************************************************************************************************************************************
+2026-11-07 23:42:38,139 p=2358134 u=mcachot n=ansible ERROR| [ERROR]: Task failed: Unexpected AnsibleActionFail error: Could not find or access 'default_site.html'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/default_site.html
+	/home/mcachot/ansible/playbooks/default_site.html
+	/home/mcachot/ansible/playbooks/files/default_site.html
+	/home/mcachot/ansible/playbooks/default_site.html on the Ansible Controller.
+
+Task failed: Unexpected AnsibleActionFail error.
+Origin: /home/mcachot/ansible/playbooks/copy-file.yml:3:5
+
+1 - hosts: all
+2   tasks:
+3   - name: Copy default HTML file for site
+      ^ column 5
+
+<<< caused by >>>
+
+Could not find or access 'default_site.html'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/default_site.html
+	/home/mcachot/ansible/playbooks/default_site.html
+	/home/mcachot/ansible/playbooks/files/default_site.html
+	/home/mcachot/ansible/playbooks/default_site.html on the Ansible Controller.
+
+If you are using a module and expect the file to exist on the remote, see the remote_src option.
+
+
+2026-11-07 23:42:38,140 p=2358134 u=mcachot n=ansible INFO| fatal: [192.168.0.106]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'default_site.html'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/default_site.html\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/default_site.html on the Ansible Controller."}
+2026-11-07 23:42:38,407 p=2358134 u=mcachot n=ansible INFO| fatal: [192.168.122.6]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'default_site.html'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/default_site.html\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/default_site.html on the Ansible Controller."}
+2026-11-07 23:42:38,428 p=2358134 u=mcachot n=ansible INFO| fatal: [192.168.122.7]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'default_site.html'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/default_site.html\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/default_site.html on the Ansible Controller."}
+2026-11-07 23:42:38,429 p=2358134 u=mcachot n=ansible INFO| PLAY RECAP ********************************************************************************************************************************************************************************************************
+2026-11-07 23:42:38,429 p=2358134 u=mcachot n=ansible INFO| 192.168.0.106              : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-11-07 23:42:38,430 p=2358134 u=mcachot n=ansible INFO| 192.168.122.6              : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-11-07 23:42:38,430 p=2358134 u=mcachot n=ansible INFO| 192.168.122.7              : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-11-07 23:43:09,579 p=2358320 u=mcachot n=ansible INFO| PLAY [lab] ********************************************************************************************************************************************************************************************************
+2026-11-07 23:43:09,586 p=2358320 u=mcachot n=ansible INFO| TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
+2026-11-07 23:43:12,186 p=2358320 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-07 23:43:12,250 p=2358320 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-07 23:43:12,255 p=2358320 u=mcachot n=ansible INFO| TASK [Copy default HTML file for site] ****************************************************************************************************************************************************************************
+2026-11-07 23:43:13,062 p=2358320 u=mcachot n=ansible ERROR| [ERROR]: Task failed: Unexpected AnsibleActionFail error: Could not find or access 'default_site.html'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/default_site.html
+	/home/mcachot/ansible/playbooks/default_site.html
+	/home/mcachot/ansible/playbooks/files/default_site.html
+	/home/mcachot/ansible/playbooks/default_site.html on the Ansible Controller.
+
+Task failed: Unexpected AnsibleActionFail error.
+Origin: /home/mcachot/ansible/playbooks/copy-file.yml:3:5
+
+1 - hosts: lab
+2   tasks:
+3   - name: Copy default HTML file for site
+      ^ column 5
+
+<<< caused by >>>
+
+Could not find or access 'default_site.html'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/default_site.html
+	/home/mcachot/ansible/playbooks/default_site.html
+	/home/mcachot/ansible/playbooks/files/default_site.html
+	/home/mcachot/ansible/playbooks/default_site.html on the Ansible Controller.
+
+If you are using a module and expect the file to exist on the remote, see the remote_src option.
+
+
+2026-11-07 23:43:13,063 p=2358320 u=mcachot n=ansible INFO| fatal: [192.168.122.6]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'default_site.html'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/default_site.html\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/default_site.html on the Ansible Controller."}
+2026-11-07 23:43:13,077 p=2358320 u=mcachot n=ansible INFO| fatal: [192.168.122.7]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'default_site.html'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/default_site.html\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/default_site.html on the Ansible Controller."}
+2026-11-07 23:43:13,078 p=2358320 u=mcachot n=ansible INFO| PLAY RECAP ********************************************************************************************************************************************************************************************************
+2026-11-07 23:43:13,078 p=2358320 u=mcachot n=ansible INFO| 192.168.122.6              : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-11-07 23:43:13,078 p=2358320 u=mcachot n=ansible INFO| 192.168.122.7              : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-11-07 23:44:18,887 p=2360574 u=mcachot n=ansible INFO| PLAY [lab] ********************************************************************************************************************************************************************************************************
+2026-11-07 23:44:18,894 p=2360574 u=mcachot n=ansible INFO| TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
+2026-11-07 23:44:21,630 p=2360574 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-07 23:44:22,663 p=2360574 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-07 23:44:22,669 p=2360574 u=mcachot n=ansible INFO| TASK [Copy default HTML file for site] ****************************************************************************************************************************************************************************
+2026-11-07 23:44:23,516 p=2360574 u=mcachot n=ansible ERROR| [ERROR]: Task failed: Unexpected AnsibleActionFail error: Could not find or access 'files/default_site.html'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/default_site.html
+	/home/mcachot/ansible/playbooks/files/default_site.html on the Ansible Controller.
+
+Task failed: Unexpected AnsibleActionFail error.
+Origin: /home/mcachot/ansible/playbooks/copy-file.yml:3:5
+
+1 - hosts: lab
+2   tasks:
+3   - name: Copy default HTML file for site
+      ^ column 5
+
+<<< caused by >>>
+
+Could not find or access 'files/default_site.html'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/default_site.html
+	/home/mcachot/ansible/playbooks/files/default_site.html on the Ansible Controller.
+
+If you are using a module and expect the file to exist on the remote, see the remote_src option.
+
+
+2026-11-07 23:44:23,517 p=2360574 u=mcachot n=ansible INFO| fatal: [192.168.122.7]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'files/default_site.html'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/files/default_site.html on the Ansible Controller."}
+2026-11-07 23:44:23,529 p=2360574 u=mcachot n=ansible INFO| fatal: [192.168.122.6]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'files/default_site.html'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/default_site.html\n\t/home/mcachot/ansible/playbooks/files/default_site.html on the Ansible Controller."}
+2026-11-07 23:44:23,531 p=2360574 u=mcachot n=ansible INFO| PLAY RECAP ********************************************************************************************************************************************************************************************************
+2026-11-07 23:44:23,531 p=2360574 u=mcachot n=ansible INFO| 192.168.122.6              : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-11-07 23:44:23,531 p=2360574 u=mcachot n=ansible INFO| 192.168.122.7              : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-11-07 23:44:49,187 p=2360687 u=mcachot n=ansible INFO| PLAY [lab] ********************************************************************************************************************************************************************************************************
+2026-11-07 23:44:49,195 p=2360687 u=mcachot n=ansible INFO| TASK [Gathering Facts] ********************************************************************************************************************************************************************************************
+2026-11-07 23:44:51,948 p=2360687 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-07 23:44:52,014 p=2360687 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-07 23:44:52,020 p=2360687 u=mcachot n=ansible INFO| TASK [Copy default HTML file for site] ****************************************************************************************************************************************************************************
+2026-11-07 23:44:55,769 p=2360687 u=mcachot n=ansible INFO| changed: [192.168.122.7]
+2026-11-07 23:44:55,791 p=2360687 u=mcachot n=ansible INFO| changed: [192.168.122.6]
+2026-11-07 23:44:55,792 p=2360687 u=mcachot n=ansible INFO| PLAY RECAP ********************************************************************************************************************************************************************************************************
+2026-11-07 23:44:55,793 p=2360687 u=mcachot n=ansible INFO| 192.168.122.6              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2026-11-07 23:44:55,793 p=2360687 u=mcachot n=ansible INFO| 192.168.122.7              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

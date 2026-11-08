@@ -1,0 +1,7 @@
+- hosts: lab
+  tasks:
+  - name: Copy default HTML file for site
+    copy:
+      src: ../files/default_site.html
+      dest: madeit.html
+

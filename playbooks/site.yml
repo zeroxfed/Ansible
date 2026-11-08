@@ -1,0 +1,38 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+  - name: Install Updates (Fedora)
+    dnf:
+      update_only: yes
+      update_cache: yes
+    when: ansible_distribution == "Fedora"
+  
+  - name: Install Updates (Ubuntu)
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: lab
+  become: true
+  tasks:    
+  - name: Install Apache and PHP for Fedora servers
+    dnf:
+      name:
+        - httpd
+        - php.x86_64
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "Fedora"
+
+  - name: Copy default HTML file for site
+    tags: apache, apache2, httpd
+      copy:
+        src: default_site.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
+

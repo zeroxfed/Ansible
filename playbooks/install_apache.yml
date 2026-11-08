@@ -3,20 +3,12 @@
 - hosts: lab
   become: true
   tasks:
- 
-  - name: update repository index
-    dnf:
-      update_cache: true
-    when: ansible_distribution == "Fedora"
- 
-  - name: install apache2 package
-    dnf:
-      name: httpd
-      state: latest
-    when: ansible_distribution == "Fedora"
 
-  - name: add php support for apache
-    dnf:
-      name: php.x86_64
+  - name: install apache2 package and PHP
+    package:
+      name: 
+        - httpd
+        - php.x86_64
       state: latest
-    when: ansible_distribution == "Fedora"
+      update_cache: yes
+   when: ansible_distribution == "Fedora"

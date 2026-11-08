@@ -2,5 +2,5 @@
 192.168.0.106 ansible_user=root
 
 [lab]
-192.168.122.6 ansible_user=pesant ansible_python_interpreter=/usr/bin/python3
-192.168.122.7 ansible_user=pesant ansible_python_interpreter=/usr/bin/python3
+192.168.122.6 ansible_user=pesant ansible_python_interpreter=/usr/bin/python3 apache_package="httpd" php_package="php.x86_64"
+192.168.122.7 ansible_user=pesant ansible_python_interpreter=/usr/bin/python3 apache_package="httpd" php_package="php.x86_64"
