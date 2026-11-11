@@ -138,3 +138,931 @@ If you are using a module and expect the file to exist on the remote, see the re
 2026-11-07 23:44:55,792 p=2360687 u=mcachot n=ansible INFO| PLAY RECAP ********************************************************************************************************************************************************************************************************
 2026-11-07 23:44:55,793 p=2360687 u=mcachot n=ansible INFO| 192.168.122.6              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 2026-11-07 23:44:55,793 p=2360687 u=mcachot n=ansible INFO| 192.168.122.7              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2026-11-10 15:43:07,946 p=1477187 u=mcachot n=ansible ERROR| [ERROR]: the playbook: playbooks.site.yml could not be found
+
+2026-11-10 15:43:22,067 p=1479332 u=mcachot n=ansible ERROR| [ERROR]: YAML parsing failed: Colons in unquoted values must be followed by a non-space character.
+Origin: /home/mcachot/ansible/playbooks/site.yml:32:11
+
+30   - name: Copy default HTML file for site
+31     tags: apache, apache2, httpd
+32       copy:
+             ^ column 11
+
+
+For example:
+
+    raw: echo 'name: ansible'
+
+Should be:
+
+    raw: "echo 'name: ansible'"
+
+
+2026-11-10 15:44:45,905 p=1481523 u=mcachot n=ansible INFO| PLAY [all] **********************************************************************************************************************************************************************************
+2026-11-10 15:44:45,913 p=1481523 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:44:48,223 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Host '192.168.0.106' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.22/reference_appendices/interpreter_discovery.html for more information.
+
+2026-11-10 15:44:48,224 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 15:44:48,529 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=1a8b7a8196ed440d9cb06623af0a1d99\
+
+2026-11-10 15:44:48,529 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:44:48,544 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=09b21dba308f4729b710ae0de626da44\
+
+2026-11-10 15:44:48,544 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:44:48,551 p=1481523 u=mcachot n=ansible INFO| TASK [Install Updates (Fedora)] *************************************************************************************************************************************************************
+2026-11-10 15:44:48,588 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2026-11-10 15:44:48,588 p=1481523 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:10:11
+
+ 8       update_only: yes
+ 9       update_cache: yes
+10     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:44:48,588 p=1481523 u=mcachot n=ansible INFO| skipping: [192.168.0.106]
+2026-11-10 15:44:51,158 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=19ff834c5ff94881a03f23169ea1c3ff\
+
+2026-11-10 15:44:51,158 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:44:51,219 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=1a7abf47de35458c97cf3b39f95440db\
+
+2026-11-10 15:44:51,219 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:44:51,225 p=1481523 u=mcachot n=ansible INFO| TASK [Install Updates (Ubuntu)] *************************************************************************************************************************************************************
+2026-11-10 15:44:51,266 p=1481523 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:16:11
+
+14       upgrade: dist
+15       update_cache: yes
+16     when: ansible_distribution == "Ubuntu"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:44:51,266 p=1481523 u=mcachot n=ansible INFO| skipping: [192.168.122.6]
+2026-11-10 15:44:51,275 p=1481523 u=mcachot n=ansible INFO| skipping: [192.168.122.7]
+2026-11-10 15:46:37,760 p=1481523 u=mcachot n=ansible INFO| changed: [192.168.0.106]
+2026-11-10 15:46:37,768 p=1481523 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 15:46:37,777 p=1481523 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:46:40,393 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=2067ad118be94d84b70c88ad07fbe3db\
+
+2026-11-10 15:46:40,394 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:46:40,558 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=5f86c7ef0d254e76ae2d916cd375d0d4\
+
+2026-11-10 15:46:40,558 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:46:40,562 p=1481523 u=mcachot n=ansible INFO| TASK [Install Apache and PHP for Fedora servers] ********************************************************************************************************************************************
+2026-11-10 15:46:43,544 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=530caaeb8ab84f738159e0032e4e4571\
+
+2026-11-10 15:46:43,545 p=1481523 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:28:11
+
+26       state: latest
+27       update_cache: yes
+28     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:46:43,545 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:46:43,685 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=5d19942b06f34ed698d318f292f2d8f0\
+
+2026-11-10 15:46:43,686 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:46:43,690 p=1481523 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 15:46:43,697 p=1481523 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:46:46,152 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=8eafc7336b1a47aaa14752a7efcd26b0\
+
+2026-11-10 15:46:46,153 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:46:46,213 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=657c863d162c4475844e7f3d624859c3\
+
+2026-11-10 15:46:46,214 p=1481523 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:46:46,219 p=1481523 u=mcachot n=ansible INFO| TASK [create simone user] *******************************************************************************************************************************************************************
+2026-11-10 15:46:48,607 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=099239a1667540dc91f140dce4df2ec6\
+
+2026-11-10 15:46:48,607 p=1481523 u=mcachot n=ansible INFO| changed: [192.168.122.7]
+2026-11-10 15:46:48,687 p=1481523 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=a577243b31b34a87938bff508816e560\
+
+2026-11-10 15:46:48,688 p=1481523 u=mcachot n=ansible INFO| changed: [192.168.122.6]
+2026-11-10 15:46:48,689 p=1481523 u=mcachot n=ansible INFO| PLAY RECAP **********************************************************************************************************************************************************************************
+2026-11-10 15:46:48,689 p=1481523 u=mcachot n=ansible INFO| 192.168.0.106              : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:46:48,690 p=1481523 u=mcachot n=ansible INFO| 192.168.122.6              : ok=6    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:46:48,690 p=1481523 u=mcachot n=ansible INFO| 192.168.122.7              : ok=6    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:52:41,439 p=1517230 u=mcachot n=ansible ERROR| [ERROR]: YAML parsing failed: Mapping values are not allowed in this context.
+Origin: /home/mcachot/ansible/playbooks/site.yml:50:9
+
+48   
+49 - name: add ssh key for simone
+50     tags: always
+           ^ column 9
+
+
+2026-11-10 15:53:38,360 p=1519584 u=mcachot n=ansible INFO| PLAY [all] **********************************************************************************************************************************************************************************
+2026-11-10 15:53:38,366 p=1519584 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:53:40,753 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Host '192.168.0.106' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.22/reference_appendices/interpreter_discovery.html for more information.
+
+2026-11-10 15:53:40,753 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 15:53:40,989 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=71135605c2fd4b019f8a3b23167a6d48\
+
+2026-11-10 15:53:40,989 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:53:41,016 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=729e9f2e2942491385636c3e7f8e35f0\
+
+2026-11-10 15:53:41,016 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:53:41,022 p=1519584 u=mcachot n=ansible INFO| TASK [Install Updates (Fedora)] *************************************************************************************************************************************************************
+2026-11-10 15:53:41,054 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2026-11-10 15:53:41,055 p=1519584 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:10:11
+
+ 8       update_only: yes
+ 9       update_cache: yes
+10     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:53:41,055 p=1519584 u=mcachot n=ansible INFO| skipping: [192.168.0.106]
+2026-11-10 15:53:43,722 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=2a4dd7b9df8f46b0a88986f422118815\
+
+2026-11-10 15:53:43,723 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:53:43,737 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=05545a964f3e4e35b495dadd6b2ca27d\
+
+2026-11-10 15:53:43,737 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:53:43,743 p=1519584 u=mcachot n=ansible INFO| TASK [Install Updates (Ubuntu)] *************************************************************************************************************************************************************
+2026-11-10 15:53:43,783 p=1519584 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:16:11
+
+14       upgrade: dist
+15       update_cache: yes
+16     when: ansible_distribution == "Ubuntu"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:53:43,783 p=1519584 u=mcachot n=ansible INFO| skipping: [192.168.122.6]
+2026-11-10 15:53:43,788 p=1519584 u=mcachot n=ansible INFO| skipping: [192.168.122.7]
+2026-11-10 15:53:46,491 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 15:53:46,496 p=1519584 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 15:53:46,503 p=1519584 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:53:48,876 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=27a85f3c8b8c41a58d24a82ae7ad07bb\
+
+2026-11-10 15:53:48,876 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:53:48,904 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=c3773a22bedb489581b5073a69099ac2\
+
+2026-11-10 15:53:48,904 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:53:48,909 p=1519584 u=mcachot n=ansible INFO| TASK [Install Apache and PHP for Fedora servers] ********************************************************************************************************************************************
+2026-11-10 15:53:51,527 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=6856eef7360445d3a9c5d3a687e5300f\
+
+2026-11-10 15:53:51,528 p=1519584 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:28:11
+
+26       state: latest
+27       update_cache: yes
+28     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:53:51,528 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:53:51,581 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=045f23971002444fb14c0d9cddeeceb0\
+
+2026-11-10 15:53:51,582 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:53:51,585 p=1519584 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 15:53:51,592 p=1519584 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:53:54,013 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=e05686c529a04ed28edcb749bbd81c9e\
+
+2026-11-10 15:53:54,014 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:53:54,021 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=4226ee61633244a4a8435444e242bba9\
+
+2026-11-10 15:53:54,021 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:53:54,025 p=1519584 u=mcachot n=ansible INFO| TASK [create simone user] *******************************************************************************************************************************************************************
+2026-11-10 15:53:56,163 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=727616f1c9784d5c8eddf85b1a79f804\
+
+2026-11-10 15:53:56,164 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:53:56,171 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=a15ed7c3a844491da9429b7839a0ccd6\
+
+2026-11-10 15:53:56,171 p=1519584 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:53:56,176 p=1519584 u=mcachot n=ansible INFO| TASK [add ssh key for simone] ***************************************************************************************************************************************************************
+2026-11-10 15:53:58,257 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=cd8bdd916ad445c585a52a2815d036af\
+
+2026-11-10 15:53:58,258 p=1519584 u=mcachot n=ansible INFO| changed: [192.168.122.6]
+2026-11-10 15:53:58,306 p=1519584 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=2dc8a5aaa2354d07874202af42d42ed2\
+
+2026-11-10 15:53:58,306 p=1519584 u=mcachot n=ansible INFO| changed: [192.168.122.7]
+2026-11-10 15:53:58,312 p=1519584 u=mcachot n=ansible INFO| TASK [add sudoers file for simone] **********************************************************************************************************************************************************
+2026-11-10 15:53:59,133 p=1519584 u=mcachot n=ansible ERROR| [ERROR]: Task failed: Unexpected AnsibleActionFail error: Could not find or access 'sudoer_simone'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/sudoer_simone
+	/home/mcachot/ansible/playbooks/sudoer_simone
+	/home/mcachot/ansible/playbooks/files/sudoer_simone
+	/home/mcachot/ansible/playbooks/sudoer_simone on the Ansible Controller.
+
+Task failed: Unexpected AnsibleActionFail error.
+Origin: /home/mcachot/ansible/playbooks/site.yml:55:5
+
+53       key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICDrdyf5v/vjSoeGuFmGO534jfTM2qoIuMxVw/sau6zr ansible@fedora"
+54
+55   - name: add sudoers file for simone
+       ^ column 5
+
+<<< caused by >>>
+
+Could not find or access 'sudoer_simone'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/sudoer_simone
+	/home/mcachot/ansible/playbooks/sudoer_simone
+	/home/mcachot/ansible/playbooks/files/sudoer_simone
+	/home/mcachot/ansible/playbooks/sudoer_simone on the Ansible Controller.
+
+If you are using a module and expect the file to exist on the remote, see the remote_src option.
+
+
+2026-11-10 15:53:59,134 p=1519584 u=mcachot n=ansible INFO| fatal: [192.168.122.6]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'sudoer_simone'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone\n\t/home/mcachot/ansible/playbooks/sudoer_simone\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone\n\t/home/mcachot/ansible/playbooks/sudoer_simone on the Ansible Controller."}
+2026-11-10 15:53:59,149 p=1519584 u=mcachot n=ansible INFO| fatal: [192.168.122.7]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'sudoer_simone'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone\n\t/home/mcachot/ansible/playbooks/sudoer_simone\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone\n\t/home/mcachot/ansible/playbooks/sudoer_simone on the Ansible Controller."}
+2026-11-10 15:53:59,150 p=1519584 u=mcachot n=ansible INFO| PLAY RECAP **********************************************************************************************************************************************************************************
+2026-11-10 15:53:59,150 p=1519584 u=mcachot n=ansible INFO| 192.168.0.106              : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:53:59,150 p=1519584 u=mcachot n=ansible INFO| 192.168.122.6              : ok=7    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:53:59,150 p=1519584 u=mcachot n=ansible INFO| 192.168.122.7              : ok=7    changed=1    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:54:32,169 p=1521929 u=mcachot n=ansible INFO| PLAY [all] **********************************************************************************************************************************************************************************
+2026-11-10 15:54:32,175 p=1521929 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:54:34,586 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Host '192.168.0.106' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.22/reference_appendices/interpreter_discovery.html for more information.
+
+2026-11-10 15:54:34,586 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 15:54:34,760 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=5a75bac8e61a4e7c87a2679e53951d04\
+
+2026-11-10 15:54:34,760 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:54:34,842 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=7cd5b18b9e7740859206232abb2e182f\
+
+2026-11-10 15:54:34,842 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:54:34,848 p=1521929 u=mcachot n=ansible INFO| TASK [Install Updates (Fedora)] *************************************************************************************************************************************************************
+2026-11-10 15:54:34,881 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2026-11-10 15:54:34,882 p=1521929 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:10:11
+
+ 8       update_only: yes
+ 9       update_cache: yes
+10     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:54:34,882 p=1521929 u=mcachot n=ansible INFO| skipping: [192.168.0.106]
+2026-11-10 15:54:37,504 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=7cc38e75d3d9431cb2580b060c480844\
+
+2026-11-10 15:54:37,505 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:54:37,692 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=cc9bc58e69f34ab9bdfc2bfb9ac9e7f1\
+
+2026-11-10 15:54:37,692 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:54:37,698 p=1521929 u=mcachot n=ansible INFO| TASK [Install Updates (Ubuntu)] *************************************************************************************************************************************************************
+2026-11-10 15:54:37,733 p=1521929 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:16:11
+
+14       upgrade: dist
+15       update_cache: yes
+16     when: ansible_distribution == "Ubuntu"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:54:37,734 p=1521929 u=mcachot n=ansible INFO| skipping: [192.168.122.6]
+2026-11-10 15:54:37,742 p=1521929 u=mcachot n=ansible INFO| skipping: [192.168.122.7]
+2026-11-10 15:54:40,170 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 15:54:40,175 p=1521929 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 15:54:40,183 p=1521929 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:54:42,604 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=1fdddd9a010549b3a70234c0e224f188\
+
+2026-11-10 15:54:42,605 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:54:42,638 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=1a160364d571406d8c13ff6cfa5d6909\
+
+2026-11-10 15:54:42,638 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:54:42,642 p=1521929 u=mcachot n=ansible INFO| TASK [Install Apache and PHP for Fedora servers] ********************************************************************************************************************************************
+2026-11-10 15:54:45,327 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=fdcb9d84fb0f483b9ee8c56dbc5d8766\
+
+2026-11-10 15:54:45,328 p=1521929 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:28:11
+
+26       state: latest
+27       update_cache: yes
+28     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:54:45,328 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:54:45,448 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=71c1639032984fae9fcca76c81d1d5c5\
+
+2026-11-10 15:54:45,449 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:54:45,453 p=1521929 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 15:54:45,460 p=1521929 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:54:47,806 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=2d06bd572dab49ee8fcbb47306909841\
+
+2026-11-10 15:54:47,806 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:54:47,965 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=c120aec05e40406282357c6da524e017\
+
+2026-11-10 15:54:47,965 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:54:47,969 p=1521929 u=mcachot n=ansible INFO| TASK [create simone user] *******************************************************************************************************************************************************************
+2026-11-10 15:54:50,065 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=0bd9d345f03d490c88abfaec9c263c8b\
+
+2026-11-10 15:54:50,065 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:54:50,122 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=17c3d5f6579b4a79b94b633f53b1a69c\
+
+2026-11-10 15:54:50,122 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:54:50,127 p=1521929 u=mcachot n=ansible INFO| TASK [add ssh key for simone] ***************************************************************************************************************************************************************
+2026-11-10 15:54:52,160 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=c3d2591b9b2e4262a7eb3e1da503a4ae\
+
+2026-11-10 15:54:52,160 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:54:52,213 p=1521929 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=cad7bcc72da74d6e975540b01c609503\
+
+2026-11-10 15:54:52,214 p=1521929 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:54:52,221 p=1521929 u=mcachot n=ansible INFO| TASK [add sudoers file for simone] **********************************************************************************************************************************************************
+2026-11-10 15:54:53,015 p=1521929 u=mcachot n=ansible ERROR| [ERROR]: Task failed: Unexpected AnsibleActionFail error: Could not find or access 'sudoer_simone'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/sudoer_simone
+	/home/mcachot/ansible/playbooks/sudoer_simone
+	/home/mcachot/ansible/playbooks/files/sudoer_simone
+	/home/mcachot/ansible/playbooks/sudoer_simone on the Ansible Controller.
+
+Task failed: Unexpected AnsibleActionFail error.
+Origin: /home/mcachot/ansible/playbooks/site.yml:55:5
+
+53       key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICDrdyf5v/vjSoeGuFmGO534jfTM2qoIuMxVw/sau6zr ansible@fedora"
+54
+55   - name: add sudoers file for simone
+       ^ column 5
+
+<<< caused by >>>
+
+Could not find or access 'sudoer_simone'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/sudoer_simone
+	/home/mcachot/ansible/playbooks/sudoer_simone
+	/home/mcachot/ansible/playbooks/files/sudoer_simone
+	/home/mcachot/ansible/playbooks/sudoer_simone on the Ansible Controller.
+
+If you are using a module and expect the file to exist on the remote, see the remote_src option.
+
+
+2026-11-10 15:54:53,017 p=1521929 u=mcachot n=ansible INFO| fatal: [192.168.122.6]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'sudoer_simone'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone\n\t/home/mcachot/ansible/playbooks/sudoer_simone\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone\n\t/home/mcachot/ansible/playbooks/sudoer_simone on the Ansible Controller."}
+2026-11-10 15:54:53,046 p=1521929 u=mcachot n=ansible INFO| fatal: [192.168.122.7]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'sudoer_simone'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone\n\t/home/mcachot/ansible/playbooks/sudoer_simone\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone\n\t/home/mcachot/ansible/playbooks/sudoer_simone on the Ansible Controller."}
+2026-11-10 15:54:53,048 p=1521929 u=mcachot n=ansible INFO| PLAY RECAP **********************************************************************************************************************************************************************************
+2026-11-10 15:54:53,048 p=1521929 u=mcachot n=ansible INFO| 192.168.0.106              : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:54:53,048 p=1521929 u=mcachot n=ansible INFO| 192.168.122.6              : ok=7    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:54:53,048 p=1521929 u=mcachot n=ansible INFO| 192.168.122.7              : ok=7    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:58:33,224 p=1526809 u=mcachot n=ansible INFO| PLAY [all] **********************************************************************************************************************************************************************************
+2026-11-10 15:58:33,231 p=1526809 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:58:35,564 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Host '192.168.0.106' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.22/reference_appendices/interpreter_discovery.html for more information.
+
+2026-11-10 15:58:35,565 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 15:58:35,723 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=a6e8fc097c764e6db665879cc69b6237\
+
+2026-11-10 15:58:35,723 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:58:35,922 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=01ad16e6d5dd4394964aa27bae307dcc\
+
+2026-11-10 15:58:35,922 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:58:35,928 p=1526809 u=mcachot n=ansible INFO| TASK [Install Updates (Fedora)] *************************************************************************************************************************************************************
+2026-11-10 15:58:35,961 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2026-11-10 15:58:35,962 p=1526809 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:10:11
+
+ 8       update_only: yes
+ 9       update_cache: yes
+10     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:58:35,962 p=1526809 u=mcachot n=ansible INFO| skipping: [192.168.0.106]
+2026-11-10 15:58:38,543 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=c7795260d42545c4a418add4849f2a55\
+
+2026-11-10 15:58:38,544 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:58:38,737 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=e1d4b606949f4f27ac243087b8a1dcf5\
+
+2026-11-10 15:58:38,737 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:58:38,743 p=1526809 u=mcachot n=ansible INFO| TASK [Install Updates (Ubuntu)] *************************************************************************************************************************************************************
+2026-11-10 15:58:38,786 p=1526809 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:16:11
+
+14       upgrade: dist
+15       update_cache: yes
+16     when: ansible_distribution == "Ubuntu"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:58:38,787 p=1526809 u=mcachot n=ansible INFO| skipping: [192.168.122.6]
+2026-11-10 15:58:38,796 p=1526809 u=mcachot n=ansible INFO| skipping: [192.168.122.7]
+2026-11-10 15:58:41,246 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 15:58:41,250 p=1526809 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 15:58:41,258 p=1526809 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:58:43,692 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=c4b42dd05c084dbfaf2198b89cebb4e0\
+
+2026-11-10 15:58:43,692 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:58:43,750 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=081efca4b8184c9dac0cd93417fa03a1\
+
+2026-11-10 15:58:43,751 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:58:43,755 p=1526809 u=mcachot n=ansible INFO| TASK [Install Apache and PHP for Fedora servers] ********************************************************************************************************************************************
+2026-11-10 15:58:46,566 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=19cc82dc17a24f88b50157c0eb334232\
+
+2026-11-10 15:58:46,567 p=1526809 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:28:11
+
+26       state: latest
+27       update_cache: yes
+28     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:58:46,567 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:58:46,713 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=51b42db6894f443cbe4144be18789f8c\
+
+2026-11-10 15:58:46,713 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:58:46,717 p=1526809 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 15:58:46,724 p=1526809 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:58:49,083 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=d0be81171d0347b9bb7eb10ffcdbe92a\
+
+2026-11-10 15:58:49,084 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:58:49,296 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=baee0a045cdd4bb186f631ae1f52f28c\
+
+2026-11-10 15:58:49,296 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:58:49,301 p=1526809 u=mcachot n=ansible INFO| TASK [create simone user] *******************************************************************************************************************************************************************
+2026-11-10 15:58:51,354 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=409860095fad47d1b0936b165923f744\
+
+2026-11-10 15:58:51,355 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:58:51,470 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=838a8fc762c645899cca63cd763a5581\
+
+2026-11-10 15:58:51,471 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:58:51,477 p=1526809 u=mcachot n=ansible INFO| TASK [add ssh key for simone] ***************************************************************************************************************************************************************
+2026-11-10 15:58:53,527 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=fce32d6cbf074e00992af9f7a6dd59ee\
+
+2026-11-10 15:58:53,528 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:58:53,654 p=1526809 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=05d5ace03c6c431f9be4b10922d2d295\
+
+2026-11-10 15:58:53,654 p=1526809 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:58:53,661 p=1526809 u=mcachot n=ansible INFO| TASK [add sudoers file for simone] **********************************************************************************************************************************************************
+2026-11-10 15:58:54,455 p=1526809 u=mcachot n=ansible ERROR| [ERROR]: Task failed: Unexpected AnsibleActionFail error: Could not find or access 'files/sudoer_simone'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/sudoer_simone
+	/home/mcachot/ansible/playbooks/files/sudoer_simone on the Ansible Controller.
+
+Task failed: Unexpected AnsibleActionFail error.
+Origin: /home/mcachot/ansible/playbooks/site.yml:55:5
+
+53       key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICDrdyf5v/vjSoeGuFmGO534jfTM2qoIuMxVw/sau6zr ansible@fedora"
+54
+55   - name: add sudoers file for simone
+       ^ column 5
+
+<<< caused by >>>
+
+Could not find or access 'files/sudoer_simone'
+Searched in:
+	/home/mcachot/ansible/playbooks/files/sudoer_simone
+	/home/mcachot/ansible/playbooks/files/sudoer_simone on the Ansible Controller.
+
+If you are using a module and expect the file to exist on the remote, see the remote_src option.
+
+
+2026-11-10 15:58:54,456 p=1526809 u=mcachot n=ansible INFO| fatal: [192.168.122.6]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'files/sudoer_simone'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone on the Ansible Controller."}
+2026-11-10 15:58:54,504 p=1526809 u=mcachot n=ansible INFO| fatal: [192.168.122.7]: FAILED! => {"changed": false, "msg": "Unexpected AnsibleActionFail error: Could not find or access 'files/sudoer_simone'\nSearched in:\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone\n\t/home/mcachot/ansible/playbooks/files/sudoer_simone on the Ansible Controller."}
+2026-11-10 15:58:54,506 p=1526809 u=mcachot n=ansible INFO| PLAY RECAP **********************************************************************************************************************************************************************************
+2026-11-10 15:58:54,506 p=1526809 u=mcachot n=ansible INFO| 192.168.0.106              : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:58:54,506 p=1526809 u=mcachot n=ansible INFO| 192.168.122.6              : ok=7    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:58:54,506 p=1526809 u=mcachot n=ansible INFO| 192.168.122.7              : ok=7    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:59:21,189 p=1533430 u=mcachot n=ansible INFO| PLAY [all] **********************************************************************************************************************************************************************************
+2026-11-10 15:59:21,195 p=1533430 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:59:23,515 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Host '192.168.0.106' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.22/reference_appendices/interpreter_discovery.html for more information.
+
+2026-11-10 15:59:23,515 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 15:59:23,766 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=275e16d8a8a346b9b1757fdd07ab652d\
+
+2026-11-10 15:59:23,766 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:59:23,855 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=df6b98581f8549098ae062cd5a3bb552\
+
+2026-11-10 15:59:23,856 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:59:23,862 p=1533430 u=mcachot n=ansible INFO| TASK [Install Updates (Fedora)] *************************************************************************************************************************************************************
+2026-11-10 15:59:23,899 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2026-11-10 15:59:23,900 p=1533430 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:10:11
+
+ 8       update_only: yes
+ 9       update_cache: yes
+10     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:59:23,900 p=1533430 u=mcachot n=ansible INFO| skipping: [192.168.0.106]
+2026-11-10 15:59:26,540 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=6e5b8335c4864724ad844a0d377e4875\
+
+2026-11-10 15:59:26,540 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:59:26,546 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=bce1151d1e5a4ba8a7ec0b7f4cc17b91\
+
+2026-11-10 15:59:26,546 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:59:26,552 p=1533430 u=mcachot n=ansible INFO| TASK [Install Updates (Ubuntu)] *************************************************************************************************************************************************************
+2026-11-10 15:59:26,590 p=1533430 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:16:11
+
+14       upgrade: dist
+15       update_cache: yes
+16     when: ansible_distribution == "Ubuntu"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:59:26,591 p=1533430 u=mcachot n=ansible INFO| skipping: [192.168.122.6]
+2026-11-10 15:59:26,604 p=1533430 u=mcachot n=ansible INFO| skipping: [192.168.122.7]
+2026-11-10 15:59:29,165 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 15:59:29,170 p=1533430 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 15:59:29,177 p=1533430 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:59:31,611 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=6b0666b2fa1e47519d21692570ba7221\
+
+2026-11-10 15:59:31,612 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:59:31,692 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=83ed70d50ce14b12b5e7df441aca4bb5\
+
+2026-11-10 15:59:31,692 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:59:31,697 p=1533430 u=mcachot n=ansible INFO| TASK [Install Apache and PHP for Fedora servers] ********************************************************************************************************************************************
+2026-11-10 15:59:34,506 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=07fdf13bfadf4584b0655ffeb2b33307\
+
+2026-11-10 15:59:34,508 p=1533430 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:28:11
+
+26       state: latest
+27       update_cache: yes
+28     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 15:59:34,508 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:59:34,527 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=249c7bd13fe24817ae06e559e743fdfa\
+
+2026-11-10 15:59:34,527 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:59:34,532 p=1533430 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 15:59:34,540 p=1533430 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 15:59:36,991 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=2818c598985344449ceca17d5839247e\
+
+2026-11-10 15:59:36,992 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:59:36,999 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=8b5f70caf0f74debbdc1e588e196c21f\
+
+2026-11-10 15:59:36,999 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:59:37,004 p=1533430 u=mcachot n=ansible INFO| TASK [create simone user] *******************************************************************************************************************************************************************
+2026-11-10 15:59:39,058 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=b245ba7336c246fba0dfef824f4ae6fb\
+
+2026-11-10 15:59:39,058 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:59:39,113 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=6b8380e06e654374acbe7f7b55a071ea\
+
+2026-11-10 15:59:39,113 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:59:39,119 p=1533430 u=mcachot n=ansible INFO| TASK [add ssh key for simone] ***************************************************************************************************************************************************************
+2026-11-10 15:59:41,232 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=b60c449bf0dd4e98bbd4a3bbc73cdbb1\
+
+2026-11-10 15:59:41,233 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 15:59:41,302 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=d33f76d5b0e64252b349e09cf758a752\
+
+2026-11-10 15:59:41,302 p=1533430 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 15:59:41,310 p=1533430 u=mcachot n=ansible INFO| TASK [add sudoers file for simone] **********************************************************************************************************************************************************
+2026-11-10 15:59:45,017 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=9f212e185e6e4828a68acfd5b17b3727\
+
+2026-11-10 15:59:45,017 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=37bee293b9ec488fa4ee6a9bd862124e\
+
+2026-11-10 15:59:45,017 p=1533430 u=mcachot n=ansible INFO| changed: [192.168.122.6]
+2026-11-10 15:59:45,060 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=9ea3dbfac4c9453a9cfdc0dc5ed6b4a0\
+
+2026-11-10 15:59:45,061 p=1533430 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=1189f6ad95ce4193b3421d22e3363890\
+
+2026-11-10 15:59:45,061 p=1533430 u=mcachot n=ansible INFO| changed: [192.168.122.7]
+2026-11-10 15:59:45,062 p=1533430 u=mcachot n=ansible INFO| PLAY RECAP **********************************************************************************************************************************************************************************
+2026-11-10 15:59:45,063 p=1533430 u=mcachot n=ansible INFO| 192.168.0.106              : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:59:45,063 p=1533430 u=mcachot n=ansible INFO| 192.168.122.6              : ok=8    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 15:59:45,063 p=1533430 u=mcachot n=ansible INFO| 192.168.122.7              : ok=8    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 16:05:32,691 p=1547032 u=mcachot n=ansible INFO| PLAY [all] **********************************************************************************************************************************************************************************
+2026-11-10 16:05:32,699 p=1547032 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 16:05:35,042 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Host '192.168.0.106' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.22/reference_appendices/interpreter_discovery.html for more information.
+
+2026-11-10 16:05:35,043 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 16:05:35,291 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=81936a871b6c499cb54d94933fbb84d4\
+
+2026-11-10 16:05:35,291 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:05:35,370 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=5d1788b4183c40fb8cc7a5ad7cdcc86d\
+
+2026-11-10 16:05:35,370 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:05:35,376 p=1547032 u=mcachot n=ansible INFO| TASK [Install Updates (Fedora)] *************************************************************************************************************************************************************
+2026-11-10 16:05:35,413 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2026-11-10 16:05:35,413 p=1547032 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:10:11
+
+ 8       update_only: yes
+ 9       update_cache: yes
+10     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 16:05:35,413 p=1547032 u=mcachot n=ansible INFO| skipping: [192.168.0.106]
+2026-11-10 16:05:37,896 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=a764644282984e749c613a41ec760ed9\
+
+2026-11-10 16:05:37,897 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:05:38,078 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=80e795150b8141a2bba7d94c0cd02886\
+
+2026-11-10 16:05:38,078 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:05:38,084 p=1547032 u=mcachot n=ansible INFO| TASK [Install Updates (Ubuntu)] *************************************************************************************************************************************************************
+2026-11-10 16:05:38,126 p=1547032 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:16:11
+
+14       upgrade: dist
+15       update_cache: yes
+16     when: ansible_distribution == "Ubuntu"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 16:05:38,127 p=1547032 u=mcachot n=ansible INFO| skipping: [192.168.122.6]
+2026-11-10 16:05:38,136 p=1547032 u=mcachot n=ansible INFO| skipping: [192.168.122.7]
+2026-11-10 16:05:40,672 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 16:05:40,677 p=1547032 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 16:05:40,684 p=1547032 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 16:05:42,997 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=15d59929590547d8b7ed538e42a0f1b3\
+
+2026-11-10 16:05:42,998 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:05:43,180 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=36b9b6acbdd04e25b91af5ac836d75e0\
+
+2026-11-10 16:05:43,180 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:05:43,185 p=1547032 u=mcachot n=ansible INFO| TASK [Install Apache and PHP for Fedora servers] ********************************************************************************************************************************************
+2026-11-10 16:05:45,868 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=83c0c819ef924d27bc48686a9d816bdb\
+
+2026-11-10 16:05:45,869 p=1547032 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:28:11
+
+26       state: latest
+27       update_cache: yes
+28     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 16:05:45,869 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:05:46,075 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=229b4e66e45347c288e65ab19cba89bb\
+
+2026-11-10 16:05:46,076 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:05:46,086 p=1547032 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 16:05:46,097 p=1547032 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 16:05:48,473 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=76174b047bda43bf96f6629e5eff9ffa\
+
+2026-11-10 16:05:48,473 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:05:48,564 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=23150f302fee4e33a1809140ae4548d4\
+
+2026-11-10 16:05:48,564 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:05:48,569 p=1547032 u=mcachot n=ansible INFO| TASK [create simone user] *******************************************************************************************************************************************************************
+2026-11-10 16:05:50,621 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=1a5f883e258942ebb521090aeb516fba\
+
+2026-11-10 16:05:50,622 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:05:50,708 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=208ac6d9c2de4b0a8ebdc3627af5a5e8\
+
+2026-11-10 16:05:50,708 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:05:50,714 p=1547032 u=mcachot n=ansible INFO| TASK [add ssh key for simone] ***************************************************************************************************************************************************************
+2026-11-10 16:05:52,720 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=ba77d76bfca5405894b26600608d4983\
+
+2026-11-10 16:05:52,721 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:05:52,795 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=cbe6a6482b7b4e6ca9321c903909f7fd\
+
+2026-11-10 16:05:52,795 p=1547032 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:05:52,802 p=1547032 u=mcachot n=ansible INFO| TASK [add sudoers file for simone] **********************************************************************************************************************************************************
+2026-11-10 16:05:56,407 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=fad9bfeebc3b43c0bd631858f138d531\
+
+2026-11-10 16:05:56,408 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=873544cf68104fa8822e14fa39e1ed6b\
+
+2026-11-10 16:05:56,408 p=1547032 u=mcachot n=ansible INFO| changed: [192.168.122.6]
+2026-11-10 16:05:56,491 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=b68d9240a5a34eb6875df092866f33ed\
+
+2026-11-10 16:05:56,491 p=1547032 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=258242bf69ff41848aa8abe1678289f6\
+
+2026-11-10 16:05:56,491 p=1547032 u=mcachot n=ansible INFO| changed: [192.168.122.7]
+2026-11-10 16:05:56,493 p=1547032 u=mcachot n=ansible INFO| PLAY RECAP **********************************************************************************************************************************************************************************
+2026-11-10 16:05:56,493 p=1547032 u=mcachot n=ansible INFO| 192.168.0.106              : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 16:05:56,493 p=1547032 u=mcachot n=ansible INFO| 192.168.122.6              : ok=8    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 16:05:56,493 p=1547032 u=mcachot n=ansible INFO| 192.168.122.7              : ok=8    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 16:16:19,411 p=1589197 u=mcachot n=ansible INFO| PLAY [all] **********************************************************************************************************************************************************************************
+2026-11-10 16:16:19,418 p=1589197 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 16:16:21,830 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Host '192.168.0.106' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.22/reference_appendices/interpreter_discovery.html for more information.
+
+2026-11-10 16:16:21,830 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 16:16:22,054 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=6d041ebba778441baec646fe2fb49462\
+
+2026-11-10 16:16:22,054 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:16:22,084 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=ced7918ca13741f988f9faa200d92288\
+
+2026-11-10 16:16:22,084 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:16:22,090 p=1589197 u=mcachot n=ansible INFO| TASK [Install Updates (Fedora)] *************************************************************************************************************************************************************
+2026-11-10 16:16:22,128 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2026-11-10 16:16:22,129 p=1589197 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/bootstrap.yml:10:11
+
+ 8       update_only: yes
+ 9       update_cache: yes
+10     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 16:16:22,129 p=1589197 u=mcachot n=ansible INFO| skipping: [192.168.0.106]
+2026-11-10 16:16:24,745 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=8c3c71a0cdf549749aafa4b22775525b\
+
+2026-11-10 16:16:24,746 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:16:24,748 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=2ffcff8eb7ef45a0b91e71d12a65ba43\
+
+2026-11-10 16:16:24,748 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:16:24,754 p=1589197 u=mcachot n=ansible INFO| TASK [Install Updates (Ubuntu)] *************************************************************************************************************************************************************
+2026-11-10 16:16:24,794 p=1589197 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/bootstrap.yml:16:11
+
+14       upgrade: dist
+15       update_cache: yes
+16     when: ansible_distribution == "Ubuntu"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 16:16:24,795 p=1589197 u=mcachot n=ansible INFO| skipping: [192.168.122.6]
+2026-11-10 16:16:24,807 p=1589197 u=mcachot n=ansible INFO| skipping: [192.168.122.7]
+2026-11-10 16:16:27,253 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 16:16:27,258 p=1589197 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 16:16:27,266 p=1589197 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 16:16:29,620 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=9d5130ab11734bea9e738c106b6a4f40\
+
+2026-11-10 16:16:29,620 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:16:29,627 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=c07ff588868148519706be7042ce0967\
+
+2026-11-10 16:16:29,627 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:16:29,631 p=1589197 u=mcachot n=ansible INFO| TASK [Install Apache and PHP for Fedora servers] ********************************************************************************************************************************************
+2026-11-10 16:16:32,301 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=e172899b2a354102961ff1ba7d5d03d8\
+
+2026-11-10 16:16:32,302 p=1589197 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/bootstrap.yml:28:11
+
+26       state: latest
+27       update_cache: yes
+28     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 16:16:32,302 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:16:32,347 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=bbe3ea4cc39b4aa1a946c289af7d040d\
+
+2026-11-10 16:16:32,347 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:16:32,352 p=1589197 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 16:16:32,360 p=1589197 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 16:16:34,699 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=cd1ed060e7f84292a63d55db1309925d\
+
+2026-11-10 16:16:34,699 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:16:35,690 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=3dd1fa469f99486b970d39bff4edb986\
+
+2026-11-10 16:16:35,690 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:16:35,695 p=1589197 u=mcachot n=ansible INFO| TASK [create simone user] *******************************************************************************************************************************************************************
+2026-11-10 16:16:37,737 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=55de4a382dd145bb8ae8224989af341a\
+
+2026-11-10 16:16:37,737 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:16:37,754 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=effe46ecb8f24b0db7eafcf3354834cb\
+
+2026-11-10 16:16:37,754 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:16:37,759 p=1589197 u=mcachot n=ansible INFO| TASK [add ssh key for simone] ***************************************************************************************************************************************************************
+2026-11-10 16:16:39,766 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=ccc749d347634e3f9338b938c5bb7211\
+
+2026-11-10 16:16:39,766 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:16:39,795 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=530df146ae464fab81cbed432748c13e\
+
+2026-11-10 16:16:39,796 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:16:39,801 p=1589197 u=mcachot n=ansible INFO| TASK [add sudoers file for simone] **********************************************************************************************************************************************************
+2026-11-10 16:16:42,899 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=222a740071654e578d8049446133d7fa\
+
+2026-11-10 16:16:42,900 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=4635acadfcfc4c2daa6cf622956d8f3f\
+
+2026-11-10 16:16:42,900 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:16:42,908 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=d93ddaead31c4012adaf759fb47779ae\
+
+2026-11-10 16:16:42,908 p=1589197 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=d563ba5f77814b8bab6a5ff81dea5b4e\
+
+2026-11-10 16:16:42,908 p=1589197 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:16:42,910 p=1589197 u=mcachot n=ansible INFO| PLAY RECAP **********************************************************************************************************************************************************************************
+2026-11-10 16:16:42,910 p=1589197 u=mcachot n=ansible INFO| 192.168.0.106              : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 16:16:42,910 p=1589197 u=mcachot n=ansible INFO| 192.168.122.6              : ok=8    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 16:16:42,910 p=1589197 u=mcachot n=ansible INFO| 192.168.122.7              : ok=8    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 16:16:52,666 p=1593943 u=mcachot n=ansible ERROR| [ERROR]: the playbook: site.yml could not be found
+
+2026-11-10 16:17:00,914 p=1594021 u=mcachot n=ansible INFO| PLAY [all] **********************************************************************************************************************************************************************************
+2026-11-10 16:17:00,921 p=1594021 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 16:17:03,285 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Host '192.168.0.106' is using the discovered Python interpreter at '/usr/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.22/reference_appendices/interpreter_discovery.html for more information.
+
+2026-11-10 16:17:03,286 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 16:17:03,481 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=cbb6aaab4f444ed4abbedd05ab567a1a\
+
+2026-11-10 16:17:03,481 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:17:03,542 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=da91329ad7c0429b9a38b775073071ae\
+
+2026-11-10 16:17:03,542 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:17:03,548 p=1594021 u=mcachot n=ansible INFO| TASK [Install Updates (Fedora)] *************************************************************************************************************************************************************
+2026-11-10 16:17:03,589 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2026-11-10 16:17:03,589 p=1594021 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:10:11
+
+ 8       update_cache: yes
+ 9     changed_when: false
+10     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 16:17:03,589 p=1594021 u=mcachot n=ansible INFO| skipping: [192.168.0.106]
+2026-11-10 16:17:06,163 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=d29087ff9e6e4470b1a70d6a774a8ffb\
+
+2026-11-10 16:17:06,163 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:17:06,179 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=e844dcf9aba14ae5af2077d4d1f5f10b\
+
+2026-11-10 16:17:06,179 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:17:06,186 p=1594021 u=mcachot n=ansible INFO| TASK [Install Updates (Ubuntu)] *************************************************************************************************************************************************************
+2026-11-10 16:17:06,227 p=1594021 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:16:11
+
+14       update_cache: yes
+15     changed_when: false
+16     when: ansible_distribution == "Ubuntu"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 16:17:06,227 p=1594021 u=mcachot n=ansible INFO| skipping: [192.168.122.6]
+2026-11-10 16:17:06,240 p=1594021 u=mcachot n=ansible INFO| skipping: [192.168.122.7]
+2026-11-10 16:17:08,366 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.0.106]
+2026-11-10 16:17:08,371 p=1594021 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 16:17:08,378 p=1594021 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 16:17:10,802 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=d91cb459d428410386a440a4261e31ad\
+
+2026-11-10 16:17:10,803 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:17:10,908 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=5853fd915990437c8919d3c166387f70\
+
+2026-11-10 16:17:10,908 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:17:10,913 p=1594021 u=mcachot n=ansible INFO| TASK [Install Apache and PHP for Fedora servers] ********************************************************************************************************************************************
+2026-11-10 16:17:13,704 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=a2af1e5264fe4e39bffa0e7a180c5b60\
+
+2026-11-10 16:17:13,706 p=1594021 u=mcachot n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mcachot/ansible/playbooks/site.yml:28:11
+
+26       state: latest
+27       update_cache: yes
+28     when: ansible_distribution == "Fedora"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-11-10 16:17:13,706 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:17:13,707 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=187499f0a2434d359c27ce70caac497f\
+
+2026-11-10 16:17:13,707 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:17:13,717 p=1594021 u=mcachot n=ansible INFO| PLAY [lab] **********************************************************************************************************************************************************************************
+2026-11-10 16:17:13,727 p=1594021 u=mcachot n=ansible INFO| TASK [Gathering Facts] **********************************************************************************************************************************************************************
+2026-11-10 16:17:16,137 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=634b785e97a34c72a48bb4d804b29afb\
+
+2026-11-10 16:17:16,137 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:17:16,140 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=05f4f19accc648b39695ce2fdf4566dd\
+
+2026-11-10 16:17:16,140 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:17:16,145 p=1594021 u=mcachot n=ansible INFO| TASK [add ssh key for simone] ***************************************************************************************************************************************************************
+2026-11-10 16:17:18,177 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=be0739937bcc48c1b36729b9d2b67382\
+
+2026-11-10 16:17:18,178 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.7]
+2026-11-10 16:17:18,284 p=1594021 u=mcachot n=ansible WARNING| [WARNING]: Module invocation had junk after the JSON data: ]3008;end=4c3517d2aeac4794aed64bce68d71fde\
+
+2026-11-10 16:17:18,284 p=1594021 u=mcachot n=ansible INFO| ok: [192.168.122.6]
+2026-11-10 16:17:18,285 p=1594021 u=mcachot n=ansible INFO| PLAY RECAP **********************************************************************************************************************************************************************************
+2026-11-10 16:17:18,286 p=1594021 u=mcachot n=ansible INFO| 192.168.0.106              : ok=2    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 16:17:18,286 p=1594021 u=mcachot n=ansible INFO| 192.168.122.6              : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2026-11-10 16:17:18,286 p=1594021 u=mcachot n=ansible INFO| 192.168.122.7              : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   

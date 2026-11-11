@@ -3,16 +3,16 @@
 - hosts: all
   become: true
   pre_tasks:
-  - name: Install Updates (Fedora)
+  - name: Update repo cache (Fedora)
     dnf:
-      update_only: yes
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "Fedora"
   
-  - name: Install Updates (Ubuntu)
+  - name: Update repo cache (Ubuntu)
     apt:
-      upgrade: dist
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "Ubuntu"
 
 - hosts: lab
@@ -27,12 +27,21 @@
       update_cache: yes
     when: ansible_distribution == "Fedora"
 
-  - name: Copy default HTML file for site
-    tags: apache, apache2, httpd
-      copy:
-        src: default_site.html
-        dest: /var/www/html/index.html
-        owner: root
-        group: root
-        mode: 0644
+#  - name: Copy default HTML file for site
+#    tags: apache, apache2, httpd
+#      copy:
+#        src: default_site.html
+#        dest: /var/www/html/index.html
+#        owner: root
+#        group: root
+#        mode: 0644
 
+- hosts: lab
+  become: true
+  tasks:
+  
+  - name: add ssh key for simone
+    tags: always
+    authorized_key:
+      user: simone
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICDrdyf5v/vjSoeGuFmGO534jfTM2qoIuMxVw/sau6zr ansible@fedora"
